@@ -3,6 +3,7 @@ apisend
 
 A small library to extend express's res.send function. It's meant to standardize API responses.
 
+The main use case is to add some granularity in error messages -- just responding 401 or 404 isn't saying too much.
 
 ###Usage:
 
