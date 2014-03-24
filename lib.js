@@ -11,6 +11,11 @@ module.exports = function(errors) {
 
   return function(req, res, next) {
     function apisend(code, contents) {
+      if ('object' === typeof code) {
+        code = code.code
+      } else if ('undefined' === typeof code) {
+        code = 0
+      }
       if (code === 0) {
         var toRespond = {
           status: 'ok',
