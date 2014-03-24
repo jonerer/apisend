@@ -1,0 +1,21 @@
+{
+  "name": "apisend",
+  "version": "0.0.1",
+  "description": "A library to enhance res.send for APIs",
+  "main": "lib.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "express",
+    "res",
+    "send"
+  ],
+  "author": "Jon Mårdsjö",
+  "license": "MIT",
+  "devDependencies": {
+    "supertest": "~0.10.0",
+    "express": "~3.5.0",
+    "should": "~3.2.0-beta1"
+  }
+}
