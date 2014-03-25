@@ -1,7 +1,7 @@
 {
   "name": "apisend",
-  "version": "0.0.1",
-  "description": "A library to enhance res.send for APIs",
+  "version": "0.0.2",
+  "description": "A library to enhance express' res.send for APIs",
   "main": "lib.js",
   "scripts": {
     "test": "mocha"
@@ -11,6 +11,10 @@
     "res",
     "send"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lulzmachine/apisend"
+  },
   "author": "Jon Mårdsjö",
   "license": "MIT",
   "devDependencies": {
