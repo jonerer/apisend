@@ -1,6 +1,6 @@
 {
   "name": "apisend",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A library to enhance express' res.send for APIs",
   "main": "lib.js",
   "scripts": {
