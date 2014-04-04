@@ -71,12 +71,15 @@ describe('apisend error codes', function() {
         response: 'You are not authorized'
       }
     }
-    app.use(apisend(errors))
+    app.use(apisend(errors, true))
     app.get('/', function(req, res) {
       res.apisend(0)
     })
     app.get('/unauthorized', function(req, res) {
       res.apisend(1)
+    })
+    app.get('/unauthorized_meta', function(req, res) {
+      res.apisend(1, 'Some meta')
     })
     closer = app.listen(3000, done)
   })
@@ -94,6 +97,17 @@ describe('apisend error codes', function() {
       if (err) return done(err)
       res.body.should.have.property('status', 'fail')
       res.body.should.have.property('response', 'You are not authorized')
+      res.body.should.have.property('code', '1')
+      done()
+    })
+  })
+
+  it('should work with an error code and some meta', function(done) {
+    request(app).get('/unauthorized_meta').expect(401).end(function(err, res) {
+      if (err) return done(err)
+      res.body.should.have.property('status', 'fail')
+      res.body.should.have.property('response', 'You are not authorized')
+      res.body.should.have.property('meta', 'Some meta')
       res.body.should.have.property('code', '1')
       done()
     })

@@ -1,4 +1,4 @@
-module.exports = function(errors) {
+module.exports = function(errors, send_meta) {
   function getError(code) {
     for (var key in errors) {
       if (errors[key].code === code) {
@@ -22,11 +22,18 @@ module.exports = function(errors) {
         res.send(200, toRespond)
       } else {
         var error = getError(code)
-        var conts = typeof(contents) == 'undefined' ? error.response : contents
+        var conts = error.response
         var toRespond = {
           status: 'fail',
           response: conts,
           code: code
+        }
+        if (send_meta) {
+          if (typeof(contents) === 'string') {
+            toRespond.meta = contents
+          } else if (typeof(contents) === 'object' && typeof(contents.message) === 'string') {
+            toRespond.meta = contents.message
+          }
         }
         res.send(error.http, toRespond)
       }
